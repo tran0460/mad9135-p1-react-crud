@@ -43,12 +43,6 @@ const Main = () => {
     );
   };
   useEffect(() => getItemsFromStorage(), []);
-  useEffect(() => {
-    window.onstorage = () => {
-      // When local storage changes, update items
-      getItemsFromStorage();
-    };
-  }, []);
   return (
     <dataContext.Provider
       value={{ itemList, uploadItem, updateItem, removeItem }}>
