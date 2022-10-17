@@ -14,6 +14,8 @@ const Main = () => {
       id: Date.now(),
     };
     localStorage.setItem(`${Date.now()}`, JSON.stringify(obj));
+    itemList.push(obj);
+    setItemList([...itemList]);
   };
   const updateItem = ({ nameInput, genreInput, dateInput, id }) => {
     const obj = {
@@ -23,6 +25,9 @@ const Main = () => {
       id: id,
     };
     localStorage.setItem(id, JSON.stringify(obj));
+    const index = itemList.findIndex((item) => item.id === id);
+    itemList.splice(index, 1, obj);
+    setItemList([...itemList]);
   };
   const getItemsFromStorage = () => {
     setItemList(
