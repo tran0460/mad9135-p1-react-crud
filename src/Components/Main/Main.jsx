@@ -1,8 +1,8 @@
 import React from "react";
-import NewItemView from "../NewItemView/NewItemView";
-import { useEffect, useState } from "react";
-import Form from "../Form/Form";
-import ListView from "../ListView/ListView";
+import { useEffect, useState, createContext } from "react";
+import { dataContext } from "../../Context";
+import AppHeader from "../AppHeader/AppHeader";
+import { Outlet } from "react-router-dom";
 
 const Main = () => {
   const [itemList, setItemList] = useState([]);
@@ -22,11 +22,13 @@ const Main = () => {
     };
   }, []);
   return (
-    <div>
-      {" "}
-      <NewItemView />
-      <ListView data={itemList} />
-    </div>
+    <dataContext.Provider value={{ itemList }}>
+      <div>
+        {" "}
+        <AppHeader />
+        <Outlet />
+      </div>
+    </dataContext.Provider>
   );
 };
 
