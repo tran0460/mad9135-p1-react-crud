@@ -29,6 +29,12 @@ const Main = () => {
     itemList.splice(index, 1, obj);
     setItemList([...itemList]);
   };
+  const removeItem = (id) => {
+    localStorage.removeItem(id);
+    const index = itemList.findIndex((item) => item.id === id);
+    itemList.splice(index, 1);
+    setItemList([...itemList]);
+  };
   const getItemsFromStorage = () => {
     setItemList(
       Object.keys(localStorage).map(function (key) {
@@ -44,7 +50,8 @@ const Main = () => {
     };
   }, []);
   return (
-    <dataContext.Provider value={{ itemList, uploadItem, updateItem }}>
+    <dataContext.Provider
+      value={{ itemList, uploadItem, updateItem, removeItem }}>
       <div>
         {" "}
         <AppHeader />
