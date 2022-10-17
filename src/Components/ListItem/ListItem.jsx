@@ -9,7 +9,14 @@ const ListItem = (props) => {
       <p>{item.name}</p>
       <p>{item.genre}</p>
       <p>{item.date}</p>
-      {editMode && <Form onCancel={() => setEditMode(false)} />}
+      {editMode && (
+        <Form
+          nameValue={item.name}
+          genreValue={item.genre}
+          dateValue={item.date}
+          onCancel={() => setEditMode(false)}
+        />
+      )}
       <button
         onClick={() => {
           setEditMode(true);
