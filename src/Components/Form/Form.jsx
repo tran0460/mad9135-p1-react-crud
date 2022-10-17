@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDataContext } from "../../Context";
 
 const Form = (props) => {
   const {
@@ -9,34 +10,14 @@ const Form = (props) => {
     dateValue = "",
     id,
   } = props;
+  const { uploadItem, updateItem } = useDataContext();
   const [nameInput, setNameInput] = useState(nameValue);
   const [genreInput, setGenreInput] = useState(genreValue);
   const [dateInput, setDateInput] = useState(dateValue);
-
-  const uploadItem = () => {
-    const obj = {
-      name: nameInput,
-      genre: genreInput,
-      date: dateInput,
-      id: Date.now(),
-    };
-    localStorage.setItem(`${Date.now()}`, JSON.stringify(obj));
+  const resetForm = () => {
     setNameInput("");
     setGenreInput("");
     setDateInput("");
-    window.dispatchEvent(new Event("storage"));
-  };
-  const updateItem = () => {
-    const obj = {
-      name: nameInput,
-      genre: genreInput,
-      date: dateInput,
-      id: id,
-    };
-    localStorage.setItem(id, JSON.stringify(obj));
-    window.dispatchEvent(new Event("storage"));
-    // hide the form
-    closeRequest();
   };
   return (
     <div>
@@ -72,8 +53,23 @@ const Form = (props) => {
       </button>
       <button
         onClick={() => {
-          if (mode === "create") return uploadItem();
-          return updateItem();
+          if (mode === "create") {
+            uploadItem({
+              nameInput,
+              genreInput,
+              dateInput,
+            });
+            resetForm();
+            return;
+          }
+          updateItem({
+            nameInput,
+            genreInput,
+            dateInput,
+            id,
+          });
+          resetForm();
+          closeRequest();
         }}>
         Submit
       </button>
