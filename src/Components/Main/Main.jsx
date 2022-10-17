@@ -6,7 +6,24 @@ import { Outlet } from "react-router-dom";
 
 const Main = () => {
   const [itemList, setItemList] = useState([]);
-
+  const uploadItem = ({ nameInput, genreInput, dateInput }) => {
+    const obj = {
+      name: nameInput,
+      genre: genreInput,
+      date: dateInput,
+      id: Date.now(),
+    };
+    localStorage.setItem(`${Date.now()}`, JSON.stringify(obj));
+  };
+  const updateItem = ({ nameInput, genreInput, dateInput, id }) => {
+    const obj = {
+      name: nameInput,
+      genre: genreInput,
+      date: dateInput,
+      id: id,
+    };
+    localStorage.setItem(id, JSON.stringify(obj));
+  };
   const getItemsFromStorage = () => {
     setItemList(
       Object.keys(localStorage).map(function (key) {
@@ -22,7 +39,7 @@ const Main = () => {
     };
   }, []);
   return (
-    <dataContext.Provider value={{ itemList }}>
+    <dataContext.Provider value={{ itemList, uploadItem, updateItem }}>
       <div>
         {" "}
         <AppHeader />
