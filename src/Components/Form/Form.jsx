@@ -40,7 +40,7 @@ const Form = (props) => {
       <label htmlFor="release-date">Game release date</label>
       <input
         value={dateInput}
-        onChange={(ev) => setDateInput(ev.target.target)}
+        onChange={(ev) => setDateInput(ev.target.value)}
         type="text"
         id="release-date"
         placeholder="Release date"
