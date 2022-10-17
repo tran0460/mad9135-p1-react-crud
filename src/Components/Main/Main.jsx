@@ -1,6 +1,8 @@
 import React from "react";
 import NewItemView from "../NewItemView/NewItemView";
 import { useEffect, useState } from "react";
+import Form from "../Form/Form";
+import ListView from "../ListView/ListView";
 
 const Main = () => {
   const [itemList, setItemList] = useState([]);
@@ -22,6 +24,7 @@ const Main = () => {
     <div>
       {" "}
       <NewItemView />
+      <ListView data={itemList} />
     </div>
   );
 };
