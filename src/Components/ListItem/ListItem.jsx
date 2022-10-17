@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import Form from "../Form/Form";
-
+import { useDataContext } from "../../Context";
 const ListItem = (props) => {
+  const { removeItem } = useDataContext();
   const { item } = props;
   const [editMode, setEditMode] = useState(false);
-  const removeItem = () => {
-    localStorage.removeItem(item.id);
-    window.dispatchEvent(new Event("storage"));
-  };
   return (
     <div>
       <p>{item.name}</p>
@@ -31,7 +28,7 @@ const ListItem = (props) => {
       </button>
       <button
         onClick={() => {
-          removeItem(item);
+          removeItem(item.id);
         }}>
         Delete
       </button>
