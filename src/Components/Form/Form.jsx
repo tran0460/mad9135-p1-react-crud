@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 
 const Form = (props) => {
-  const { nameValue = "", genreValue = "", dateValue = "" } = props;
+  const {
+    mode = "create",
+    closeRequest,
+    nameValue = "",
+    genreValue = "",
+    dateValue = "",
+    id,
+  } = props;
   const [nameInput, setNameInput] = useState(nameValue);
   const [genreInput, setGenreInput] = useState(genreValue);
   const [dateInput, setDateInput] = useState(dateValue);
@@ -18,6 +25,18 @@ const Form = (props) => {
     setGenreInput("");
     setDateInput("");
     window.dispatchEvent(new Event("storage"));
+  };
+  const updateItem = () => {
+    const obj = {
+      name: nameInput,
+      genre: genreInput,
+      date: dateInput,
+      id: id,
+    };
+    localStorage.setItem(id, JSON.stringify(obj));
+    window.dispatchEvent(new Event("storage"));
+    // hide the form
+    closeRequest();
   };
   return (
     <div>
@@ -45,10 +64,16 @@ const Form = (props) => {
         id="release-date"
         placeholder="Release date"
       />
-      <button onClick={() => {}}>Cancel</button>
       <button
         onClick={() => {
-          uploadItem();
+          closeRequest();
+        }}>
+        Cancel
+      </button>
+      <button
+        onClick={() => {
+          if (mode === "create") return uploadItem();
+          return updateItem();
         }}>
         Submit
       </button>
