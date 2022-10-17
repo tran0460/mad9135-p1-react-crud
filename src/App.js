@@ -1,10 +1,11 @@
 import "./App.css";
+import Main from "./Components/Main/Main";
 import NewItemView from "./Components/NewItemView/NewItemView";
 
 function App() {
   return (
     <div className="App">
-      <NewItemView />
+      <Main />
     </div>
   );
 }
