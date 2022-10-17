@@ -1,17 +1,12 @@
 import React from "react";
+import ListItem from "../ListItem/ListItem";
 
 const ListView = (props) => {
   const { data } = props;
   return (
     <div>
       {data.map((item) => {
-        return (
-          <div>
-            <p>{item.name}</p>
-            <p>{item.genre}</p>
-            <p>{item.date}</p>
-          </div>
-        );
+        return <ListItem item={item} />;
       })}
     </div>
   );
