@@ -4,6 +4,10 @@ import Form from "../Form/Form";
 const ListItem = (props) => {
   const { item } = props;
   const [editMode, setEditMode] = useState(false);
+  const removeItem = () => {
+    localStorage.removeItem(item.id);
+    window.dispatchEvent(new Event("storage"));
+  };
   return (
     <div>
       <p>{item.name}</p>
@@ -11,10 +15,12 @@ const ListItem = (props) => {
       <p>{item.date}</p>
       {editMode && (
         <Form
+          mode="edit"
           nameValue={item.name}
           genreValue={item.genre}
           dateValue={item.date}
-          onCancel={() => setEditMode(false)}
+          id={item.id}
+          closeRequest={() => setEditMode(false)}
         />
       )}
       <button
@@ -23,7 +29,12 @@ const ListItem = (props) => {
         }}>
         Edit
       </button>
-      <button>Delete</button>
+      <button
+        onClick={() => {
+          removeItem(item);
+        }}>
+        Delete
+      </button>
     </div>
   );
 };
