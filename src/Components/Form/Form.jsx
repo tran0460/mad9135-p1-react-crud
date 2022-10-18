@@ -3,7 +3,6 @@ import { useDataContext } from "../../Context";
 
 const Form = (props) => {
   const {
-    mode = "create",
     closeRequest,
     nameValue = "",
     genreValue = "",
@@ -53,7 +52,7 @@ const Form = (props) => {
       </button>
       <button
         onClick={() => {
-          if (mode === "create") {
+          if (!id) {
             uploadItem({
               nameInput,
               genreInput,

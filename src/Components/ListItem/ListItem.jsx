@@ -12,7 +12,6 @@ const ListItem = (props) => {
       <p>{item.date}</p>
       {editMode && (
         <Form
-          mode="edit"
           nameValue={item.name}
           genreValue={item.genre}
           dateValue={item.date}
