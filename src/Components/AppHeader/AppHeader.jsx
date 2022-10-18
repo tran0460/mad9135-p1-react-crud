@@ -138,45 +138,6 @@ const AppHeader = () => {
         </Toolbar>
       </Container>
     </AppBar>
-    // return (
-    //   <AppBar
-    //     position="static"
-    //     style={{ background: "#4a4e69" }}
-    //     sx={{
-    //       py: "1rem",
-    //     }}>
-    //     <Container maxWidth="xxl">
-    //       <Toolbar>
-    //         <SportsEsportsIcon
-    //           sx={{
-    //             display: "flow",
-    //             transform: "scale(2.5)",
-    //             mr: "2rem",
-    //           }}
-    //         />
-    //         <Typography
-    //           variant="h3"
-    //           noWrap
-    //           component="div"
-    //           sx={{
-    //             flexGrow: 1,
-    //             display: "block",
-    //           }}>
-    //           Game Library
-    //         </Typography>
-    //         <Box sx={{ flexGrow: 1, display: { xs: "flex" } }}>
-    //           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-    //             {pages.map((page) => (
-    //               <NavLink to={page} key={page}>
-    //                 {page.charAt(0).toUpperCase() + page.slice(1)}
-    //               </NavLink>
-    //             ))}
-    //           </Box>
-    //         </Box>
-    //       </Toolbar>
-    //     </Container>
-    //   </AppBar>
-    // );
   );
 };
 
