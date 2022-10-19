@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Form from "../Form/Form";
 import { useDataContext } from "../../Context";
+import EditIcon from "@mui/icons-material/Edit";
 import {
   Typography,
   Button,
@@ -12,19 +13,46 @@ const ListItem = (props) => {
   const { setCurrentItemId, setToggleDialog } = useDataContext();
   const { item } = props;
   const [editMode, setEditMode] = useState(false);
+  const dashedBorder = {
+    border: 1,
+    borderColor: "grey.500",
+  };
   return (
     <Card
-      sx={{ width: "100%", m: "1rem" }}
-      style={{ boxShadow: "0px 0px 12px rgba(77, 77, 77, 0.2)" }}>
+      sx={{
+        width: "100%",
+        m: "1rem",
+        borderRadius: "8px",
+        border: editMode ? 1 : null,
+        borderColor: editMode ? "grey.500" : null,
+      }}
+      style={{
+        boxShadow: "0px 0px 12px rgba(77, 77, 77, 0.2)",
+        borderStyle: editMode ? "dashed" : null,
+      }}>
       {editMode ? (
-        <Form
-          nameValue={item.name}
-          genreValue={item.genre}
-          dateValue={item.date}
-          descriptionValue={item.description}
-          id={item.id}
-          closeRequest={() => setEditMode(false)}
-        />
+        <>
+          <Typography
+            sx={{
+              mt: "1rem",
+              mx: "1.5rem",
+              display: "flex",
+              alignItems: "center",
+              color: "grey.600",
+              fontSize: "1.15rem",
+            }}>
+            <EditIcon sx={{ mr: ".5rem" }} />
+            Editing
+          </Typography>
+          <Form
+            nameValue={item.name}
+            genreValue={item.genre}
+            dateValue={item.date}
+            descriptionValue={item.description}
+            id={item.id}
+            closeRequest={() => setEditMode(false)}
+          />
+        </>
       ) : (
         <>
           <CardContent>
@@ -52,6 +80,7 @@ const ListItem = (props) => {
               Edit
             </Button>
             <Button
+              color="error"
               onClick={() => {
                 setToggleDialog(true);
                 setCurrentItemId(item.id);
