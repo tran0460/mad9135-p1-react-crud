@@ -3,20 +3,23 @@ import { useDataContext } from "../../Context";
 
 const Form = (props) => {
   const {
-    closeRequest,
+    closeRequest = () => {},
     nameValue = "",
     genreValue = "",
     dateValue = "",
+    descriptionValue = "",
     id,
   } = props;
   const { uploadItem, updateItem } = useDataContext();
   const [nameInput, setNameInput] = useState(nameValue);
   const [genreInput, setGenreInput] = useState(genreValue);
   const [dateInput, setDateInput] = useState(dateValue);
+  const [descriptionInput, setDescriptionInput] = useState(descriptionValue);
   const resetForm = () => {
     setNameInput("");
     setGenreInput("");
     setDateInput("");
+    setDescriptionInput("");
   };
   return (
     <div>
@@ -57,6 +60,7 @@ const Form = (props) => {
               nameInput,
               genreInput,
               dateInput,
+              descriptionInput,
             });
             resetForm();
             return;
@@ -65,6 +69,7 @@ const Form = (props) => {
             nameInput,
             genreInput,
             dateInput,
+            descriptionInput,
             id,
           });
           resetForm();
