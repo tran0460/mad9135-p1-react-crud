@@ -54,6 +54,12 @@ const Main = () => {
           maxWidth="xl"
           sx={{
             py: "1rem",
+            display: "flex",
+            flexDirection: {
+              xs: "column",
+              lg: "row",
+            },
+            gap: "2rem",
           }}>
           <Outlet />
         </Container>
