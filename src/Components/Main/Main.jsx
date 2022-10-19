@@ -50,7 +50,7 @@ const Main = () => {
       <div>
         {" "}
         <AppHeader />
-        <Container maxWidth="xl">
+        <Container maxWidth="lg">
           <Outlet />
         </Container>
       </div>

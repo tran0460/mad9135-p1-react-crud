@@ -24,7 +24,7 @@ const ListItem = (props) => {
     );
   return (
     <Card
-      sx={{ minWidth: "22.5%", m: "1rem" }}
+      sx={{ width: "100%", m: "1rem" }}
       style={{ boxShadow: "0px 0px 12px rgba(77, 77, 77, 0.2)" }}>
       <CardContent>
         <Typography variant="h5" component="div">

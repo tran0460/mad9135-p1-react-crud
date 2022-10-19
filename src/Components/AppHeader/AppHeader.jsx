@@ -24,7 +24,7 @@ const AppHeader = () => {
   };
   return (
     <AppBar position="static" style={{ background: "#4a4e69" }}>
-      <Container maxWidth="xl">
+      <Container maxWidth="lg">
         <Toolbar disableGutters>
           <SportsEsportsIcon
             sx={{
