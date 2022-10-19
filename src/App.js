@@ -9,7 +9,8 @@ function App() {
     <HashRouter>
       <Routes>
         <Route path="/" element={<Main />}>
-          <Route path="list" element={<ListView />} />
+          <Route index element={<ListView />} />
+          <Route index path="list" element={<ListView />} />
           <Route path="new" element={<Form />} />
         </Route>
       </Routes>
