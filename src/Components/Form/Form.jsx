@@ -1,3 +1,4 @@
+import { Container, TextField, Button, Box, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { useDataContext } from "../../Context";
 
@@ -22,62 +23,123 @@ const Form = (props) => {
     setDescriptionInput("");
   };
   return (
-    <div>
-      <label htmlFor="name">Game name</label>
-      <input
+    <Container
+      sx={{
+        py: "1rem",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "flex-start",
+        width: "fit-content",
+      }}>
+      {!id && (
+        <Typography
+          variant="h4"
+          sx={{
+            mb: "1rem",
+            alignSelf: "center",
+          }}>
+          Create a new game
+        </Typography>
+      )}
+      <TextField
+        required
+        id="outlined-required"
+        label="Game name"
+        defaultValue={nameInput}
         value={nameInput}
         onChange={(ev) => setNameInput(ev.target.value)}
-        type="text"
-        id="name"
-        placeholder="Name"
+        sx={{
+          minWidth: "50%",
+          mb: "1rem",
+        }}
       />
-      <label htmlFor="genre">Game Genre</label>
-      <input
+      <TextField
+        required
+        id="outlined-required"
+        label="Game genre"
+        defaultValue={genreInput}
         value={genreInput}
         onChange={(ev) => setGenreInput(ev.target.value)}
-        type="text"
-        id="genre"
-        placeholder="Genre"
+        sx={{
+          minWidth: "50%",
+          mb: "1rem",
+        }}
       />
-      <label htmlFor="release-date">Game release date</label>
-      <input
+      <TextField
+        required
+        id="outlined-required"
+        label="Release year"
+        defaultValue={dateInput}
         value={dateInput}
         onChange={(ev) => setDateInput(ev.target.value)}
-        type="text"
-        id="release-date"
-        placeholder="Release date"
+        sx={{
+          minWidth: "50%",
+          mb: "1rem",
+        }}
       />
-      <button
-        onClick={() => {
-          closeRequest();
+      <TextField
+        multiline
+        id="outlined-multiline-static"
+        label="Game description"
+        defaultValue={descriptionInput}
+        onChange={(ev) => setDescriptionInput(ev.target.value)}
+        sx={{
+          width: {
+            xs: "100%",
+            md: "70%",
+          },
+          minWidth: {
+            xs: "100%",
+            md: "30rem",
+            lg: "50rem",
+          },
+          mb: "1rem",
+        }}
+        minRows={3}
+      />
+      <Box
+        sx={{
+          alignSelf: "flex-end",
         }}>
-        Cancel
-      </button>
-      <button
-        onClick={() => {
-          if (!id) {
-            uploadItem({
+        {id && (
+          <Button
+            color="error"
+            variant="text"
+            onClick={() => {
+              closeRequest();
+            }}>
+            Cancel
+          </Button>
+        )}
+        <Button
+          variant="contained"
+          sx={{ ml: "1rem" }}
+          onClick={() => {
+            if (!id) {
+              uploadItem({
+                nameInput,
+                genreInput,
+                dateInput,
+                descriptionInput,
+              });
+              resetForm();
+              return;
+            }
+            updateItem({
               nameInput,
               genreInput,
               dateInput,
               descriptionInput,
+              id,
             });
             resetForm();
-            return;
-          }
-          updateItem({
-            nameInput,
-            genreInput,
-            dateInput,
-            descriptionInput,
-            id,
-          });
-          resetForm();
-          closeRequest();
-        }}>
-        Submit
-      </button>
-    </div>
+            closeRequest();
+          }}>
+          Submit
+        </Button>
+      </Box>
+    </Container>
   );
 };
 
