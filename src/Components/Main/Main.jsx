@@ -4,9 +4,16 @@ import { dataContext } from "../../Context";
 import AppHeader from "../AppHeader/AppHeader";
 import { Outlet } from "react-router-dom";
 import { Container } from "@mui/material";
+import ConfirmDialog from "../Dialog/ConfirmDialog";
 
 const Main = () => {
   const [itemList, setItemList] = useState([]);
+  const [toggleDialog, setToggleDialog] = useState(true);
+  const [dialogDeleteConfirm, setDialogDeleteConfirm] = useState(() => {});
+  const deleteConfirmation = (cb) => {
+    setDialogDeleteConfirm(cb);
+    setToggleDialog(true);
+  };
   const uploadItem = ({ nameInput, genreInput, dateInput }) => {
     const obj = {
       name: nameInput,
@@ -46,9 +53,21 @@ const Main = () => {
   useEffect(() => getItemsFromStorage(), []);
   return (
     <dataContext.Provider
-      value={{ itemList, uploadItem, updateItem, removeItem }}>
+      value={{
+        itemList,
+        uploadItem,
+        updateItem,
+        removeItem,
+        deleteConfirmation,
+      }}>
       <div>
         {" "}
+        <ConfirmDialog
+          toggle={toggleDialog}
+          onCancel={() => {
+            setToggleDialog(false);
+          }}
+        />
         <AppHeader />
         <Container maxWidth="lg">
           <Outlet />
