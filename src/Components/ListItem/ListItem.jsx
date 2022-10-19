@@ -36,11 +36,7 @@ const ListItem = (props) => {
         <Typography sx={{ mb: 1.5, fontSize: "1rem" }} color="text.secondary">
           Genre: {item.genre}
         </Typography>
-        <Typography variant="body1">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
+        <Typography variant="body1">{item.description}</Typography>
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
         <Button
