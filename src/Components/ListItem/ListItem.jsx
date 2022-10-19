@@ -5,20 +5,21 @@ const ListItem = (props) => {
   const { removeItem } = useDataContext();
   const { item } = props;
   const [editMode, setEditMode] = useState(false);
+  if (editMode)
+    return (
+      <Form
+        nameValue={item.name}
+        genreValue={item.genre}
+        dateValue={item.date}
+        id={item.id}
+        closeRequest={() => setEditMode(false)}
+      />
+    );
   return (
     <div>
       <p>{item.name}</p>
       <p>{item.genre}</p>
       <p>{item.date}</p>
-      {editMode && (
-        <Form
-          nameValue={item.name}
-          genreValue={item.genre}
-          dateValue={item.date}
-          id={item.id}
-          closeRequest={() => setEditMode(false)}
-        />
-      )}
       <button
         onClick={() => {
           setEditMode(true);
