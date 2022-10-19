@@ -9,7 +9,7 @@ import {
   CardActions,
 } from "@mui/material";
 const ListItem = (props) => {
-  const { removeItem } = useDataContext();
+  const { setCurrentItemId, setToggleDialog } = useDataContext();
   const { item } = props;
   const [editMode, setEditMode] = useState(false);
   if (editMode)
@@ -27,22 +27,22 @@ const ListItem = (props) => {
       sx={{ width: "100%", m: "1rem" }}
       style={{ boxShadow: "0px 0px 12px rgba(77, 77, 77, 0.2)" }}>
       <CardContent>
-        <Typography variant="h5" component="div">
+        <Typography variant="h4" component="div">
           {item.name}
         </Typography>
-        <Typography sx={{ mb: 0.5 }} color="text.secondary">
+        <Typography sx={{ mb: 0.5, fontSize: "1.4rem" }} color="text.secondary">
           {item.date}
         </Typography>
-        <Typography sx={{ mb: 1.5, fontSize: ".8rem" }} color="text.secondary">
+        <Typography sx={{ mb: 1.5, fontSize: "1rem" }} color="text.secondary">
           Genre: {item.genre}
         </Typography>
-        <Typography variant="body2">
+        <Typography variant="body1">
           well meaning and kindly.
           <br />
           {'"a benevolent smile"'}
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
         <Button
           onClick={() => {
             setEditMode(true);
@@ -52,7 +52,8 @@ const ListItem = (props) => {
         </Button>
         <Button
           onClick={() => {
-            removeItem(item.id);
+            setToggleDialog(true);
+            setCurrentItemId(item.id);
           }}
           size="small">
           Delete
