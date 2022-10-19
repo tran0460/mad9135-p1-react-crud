@@ -50,17 +50,7 @@ const Main = () => {
       <div>
         {" "}
         <AppHeader />
-        <Container
-          maxWidth="xl"
-          sx={{
-            py: "1rem",
-            display: "flex",
-            flexDirection: {
-              xs: "column",
-              lg: "row",
-            },
-            gap: "2rem",
-          }}>
+        <Container maxWidth="xl">
           <Outlet />
         </Container>
       </div>

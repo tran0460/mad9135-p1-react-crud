@@ -23,13 +23,18 @@ const ListItem = (props) => {
       />
     );
   return (
-    <Card sx={{ width: "fit-content", minWidth: "20rem", m: "1rem" }}>
+    <Card
+      sx={{ minWidth: "22.5%", m: "1rem" }}
+      style={{ boxShadow: "0px 0px 12px rgba(77, 77, 77, 0.2)" }}>
       <CardContent>
         <Typography variant="h5" component="div">
           {item.name}
         </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+        <Typography sx={{ mb: 0.5 }} color="text.secondary">
           {item.date}
+        </Typography>
+        <Typography sx={{ mb: 1.5, fontSize: ".8rem" }} color="text.secondary">
+          Genre: {item.genre}
         </Typography>
         <Typography variant="body2">
           well meaning and kindly.
