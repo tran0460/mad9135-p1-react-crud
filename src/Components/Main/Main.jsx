@@ -50,7 +50,11 @@ const Main = () => {
       <div>
         {" "}
         <AppHeader />
-        <Container maxWidth="xl">
+        <Container
+          maxWidth="xl"
+          sx={{
+            py: "1rem",
+          }}>
           <Outlet />
         </Container>
       </div>
