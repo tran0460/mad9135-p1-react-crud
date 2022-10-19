@@ -10,10 +10,7 @@ const ListView = (props) => {
       sx={{
         py: "1rem",
         display: "flex",
-        flexDirection: {
-          xs: "column",
-          md: "row",
-        },
+        flexDirection: "column",
         width: "100%",
       }}>
       {itemList?.map((item) => {
