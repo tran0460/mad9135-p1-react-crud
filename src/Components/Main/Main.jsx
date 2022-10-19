@@ -60,6 +60,7 @@ const Main = () => {
       <div>
         {" "}
         <ConfirmDialog
+          itemName={itemList.find((item) => item.id === currentItemId)?.name}
           toggle={toggleDialog}
           onCancel={() => {
             setToggleDialog(false);
