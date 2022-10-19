@@ -10,22 +10,35 @@ const Main = () => {
   const [itemList, setItemList] = useState([]);
   const [toggleDialog, setToggleDialog] = useState(false);
   const [currentItemId, setCurrentItemId] = useState();
-  const uploadItem = ({ nameInput, genreInput, dateInput }) => {
+  const uploadItem = ({
+    nameInput,
+    genreInput,
+    dateInput,
+    descriptionInput,
+  }) => {
     const obj = {
       name: nameInput,
       genre: genreInput,
       date: dateInput,
+      description: descriptionInput,
       id: Date.now(),
     };
     localStorage.setItem(`${Date.now()}`, JSON.stringify(obj));
     itemList.push(obj);
     setItemList([...itemList]);
   };
-  const updateItem = ({ nameInput, genreInput, dateInput, id }) => {
+  const updateItem = ({
+    nameInput,
+    genreInput,
+    dateInput,
+    descriptionInput,
+    id,
+  }) => {
     const obj = {
       name: nameInput,
       genre: genreInput,
       date: dateInput,
+      description: descriptionInput,
       id: id,
     };
     localStorage.setItem(id, JSON.stringify(obj));
