@@ -3,6 +3,7 @@ import { useEffect, useState, createContext } from "react";
 import { dataContext } from "../../Context";
 import AppHeader from "../AppHeader/AppHeader";
 import { Outlet } from "react-router-dom";
+import { Container } from "@mui/material";
 
 const Main = () => {
   const [itemList, setItemList] = useState([]);
@@ -49,7 +50,9 @@ const Main = () => {
       <div>
         {" "}
         <AppHeader />
-        <Outlet />
+        <Container maxWidth="xl">
+          <Outlet />
+        </Container>
       </div>
     </dataContext.Provider>
   );
