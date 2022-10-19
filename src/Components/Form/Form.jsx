@@ -30,7 +30,7 @@ const Form = (props) => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "flex-start",
-        width: "fit-content",
+        width: id ? "100%" : "fit-content",
       }}>
       {!id && (
         <Typography
