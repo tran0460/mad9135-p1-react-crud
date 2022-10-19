@@ -8,12 +8,8 @@ import ConfirmDialog from "../Dialog/ConfirmDialog";
 
 const Main = () => {
   const [itemList, setItemList] = useState([]);
-  const [toggleDialog, setToggleDialog] = useState(true);
-  const [dialogDeleteConfirm, setDialogDeleteConfirm] = useState(() => {});
-  const deleteConfirmation = (cb) => {
-    setDialogDeleteConfirm(cb);
-    setToggleDialog(true);
-  };
+  const [toggleDialog, setToggleDialog] = useState(false);
+  const [currentItemId, setCurrentItemId] = useState();
   const uploadItem = ({ nameInput, genreInput, dateInput }) => {
     const obj = {
       name: nameInput,
@@ -58,13 +54,18 @@ const Main = () => {
         uploadItem,
         updateItem,
         removeItem,
-        deleteConfirmation,
+        setToggleDialog,
+        setCurrentItemId,
       }}>
       <div>
         {" "}
         <ConfirmDialog
           toggle={toggleDialog}
           onCancel={() => {
+            setToggleDialog(false);
+          }}
+          onConfirm={() => {
+            removeItem(currentItemId);
             setToggleDialog(false);
           }}
         />
