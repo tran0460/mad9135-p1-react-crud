@@ -7,27 +7,27 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
 const ConfirmDialog = (props) => {
-  const { toggle, onCancel, onConfirm } = props;
+  const { toggle, onCancel, onConfirm, itemName } = props;
   return (
     <Dialog
       open={toggle}
       onClose={onCancel}
       aria-labelledby="responsive-dialog-title">
       <DialogTitle id="responsive-dialog-title">
-        {"Use Google's location service?"}
+        {`Delete ${itemName}?`}
       </DialogTitle>
       <DialogContent>
         <DialogContentText>
-          Let Google help apps determine location. This means sending anonymous
-          location data to Google, even when no apps are running.
+          You are about to delete a game from the library, this action cannot be
+          undone.
         </DialogContentText>
       </DialogContent>
       <DialogActions>
         <Button autoFocus onClick={onCancel}>
-          Disagree
+          Cancel
         </Button>
         <Button onClick={onConfirm} autoFocus>
-          Agree
+          Confirm
         </Button>
       </DialogActions>
     </Dialog>
