@@ -13,10 +13,6 @@ const ListItem = (props) => {
   const { setCurrentItemId, setToggleDialog } = useDataContext();
   const { item } = props;
   const [editMode, setEditMode] = useState(false);
-  const dashedBorder = {
-    border: 1,
-    borderColor: "grey.500",
-  };
   return (
     <Card
       sx={{
