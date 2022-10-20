@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 const ListItem = (props) => {
   const { setCurrentItemId, setToggleDialog } = useDataContext();
-  const { item } = props;
+  const { item, key, id } = props;
   const [editMode, setEditMode] = useState(false);
   return (
     <Card
@@ -22,6 +22,8 @@ const ListItem = (props) => {
         border: editMode ? 1 : null,
         borderColor: editMode ? "grey.500" : null,
       }}
+      key={key}
+      id={id}
       style={{
         boxShadow: "0px 0px 12px rgba(77, 77, 77, 0.2)",
         borderStyle: editMode ? "dashed" : null,

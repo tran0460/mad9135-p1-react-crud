@@ -14,7 +14,7 @@ const ListView = (props) => {
         width: "100%",
       }}>
       {itemList?.map((item) => {
-        return <ListItem item={item} key={item.id} />;
+        return <ListItem item={item} key={item.id} id={item.id} />;
       })}
     </Container>
   );
