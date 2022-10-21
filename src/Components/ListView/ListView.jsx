@@ -1,7 +1,7 @@
 import React from "react";
 import ListItem from "../ListItem/ListItem";
 import { useDataContext } from "../../Context";
-import { Container } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 
 const ListView = (props) => {
   const { itemList } = useDataContext();
@@ -13,9 +13,24 @@ const ListView = (props) => {
         flexDirection: "column",
         width: "100%",
       }}>
-      {itemList?.map((item) => {
-        return <ListItem item={item} key={item.id} id={item.id} />;
-      })}
+      {itemList.length > 0 ? (
+        itemList?.map((item) => {
+          return <ListItem item={item} key={item.id} id={item.id} />;
+        })
+      ) : (
+        <>
+          <Typography
+            color={"grey.600"}
+            variant="h4"
+            sx={{
+              mt: "2rem",
+              width: "100%",
+              textAlign: "center",
+            }}>
+            Your list is empty
+          </Typography>
+        </>
+      )}
     </Container>
   );
 };
