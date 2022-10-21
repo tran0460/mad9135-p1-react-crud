@@ -83,6 +83,7 @@ const Form = (props) => {
         id="outlined-multiline-static"
         label="Game description"
         defaultValue={descriptionInput}
+        value={descriptionInput}
         onChange={(ev) => setDescriptionInput(ev.target.value)}
         sx={{
           width: {
